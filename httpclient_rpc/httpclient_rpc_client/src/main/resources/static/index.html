@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        var url = "123";
+        // javascript中默认的，ajax请求不能跨域。
+        // 跨域 - ajax所属的站点，和被请求的站点，不是同一个域。
+        // 域 - ip，端口，域名，主机名，任何一个有变化，都是不同域。
+        // 需要服务器，返回的响应中增加跨域请求头。
+        function sendBodyParams(){
+            $.ajax({
+                "url": "http://localhost:80/bodyParams",
+                "type":"post",
+                "data":"[{\"name\":\"abc\", \"password\":\"123\"},{\"name\":\"def\", \"password\":\"321\"}]",
+                // 必须设定，代表请求体的格式。默认是text/plain； 默认是 参数名=参数值&参数名=参数值 的字符串
+                "contentType":"application/json",
+                "dataType":"json",
+                "success":function(data){
+                    alert(data);
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+</head>
+<body style="text-align: center">
+<button onclick="sendBodyParams()">测试AJAX请求，请求体传递JSON参数</button>
+</body>
+</html>
