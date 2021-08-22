@@ -12,6 +12,7 @@ public class ClientMainClass {
         FirstInterface first=null;
         try {
             first= (FirstInterface) Naming.lookup("rmi://localhost:9999/first");
+            System.out.println("hh");
             System.out.println(first);
             System.out.println(first.first("hello world"));
         } catch (NotBoundException e) {
